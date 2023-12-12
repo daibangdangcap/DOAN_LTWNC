@@ -1,0 +1,199 @@
+<body>
+  <div class="row mb-5">
+    <!-- Hình -->
+    <div class="col-6 p-5">
+      <div
+        class="justify-content-center align-items-start d-flex"
+        style="margin-bottom: 100px"
+      >
+        <img
+          class="img-size-main"
+          src="http://localhost:3800/images/{{ product.hinhAnh[hinh].tenImageSP }}"
+          alt=""
+        />
+      </div>
+      <!-- Nút hình -->
+      <div class="justify-content-center align-items-betwween d-flex">
+        <button #firstButton class="rounded-button" (click)="Hinhchange(0)">
+          <img
+            class="img-size-button"
+            src="http://localhost:3800/images/{{
+              product.hinhAnh[0].tenImageSP
+            }}"
+            alt=""
+          />
+        </button>
+        <button class="rounded-button ms-5 me-5" (click)="Hinhchange(1)">
+          <img
+            class="img-size-button"
+            src="http://localhost:3800/images/{{
+              product.hinhAnh[1].tenImageSP
+            }}"
+            alt=""
+          />
+        </button>
+        <button class="rounded-button" (click)="Hinhchange(2)">
+          <img
+            class="img-size-button"
+            src="http://localhost:3800/images/{{
+              product.hinhAnh[2].tenImageSP
+            }}"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+    <!-- Tên sản phẩm -->
+    <div class="col-6 text-start p-5">
+      <h2 class="">{{ product.tenSP }}</h2>
+      <h5 class="fs-3" style="color: #0066cc">
+        {{ product.giaTien | currency : "VND" : " " }}đ
+      </h5>
+      <hr />
+      <div class="font" class="fs-3">
+        <ng-container [ngSwitch]="loaiSP">
+          <ng-container *ngSwitchCase="'Chuột'">
+            <ng-container *ngTemplateOutlet="chuot"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Màn Hình'">
+            <ng-container *ngTemplateOutlet="manHinh"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Bàn Phím'">
+            <ng-container *ngTemplateOutlet="banPhim"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Điện Thoại'">
+            <ng-container *ngTemplateOutlet="dienThoai"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Tai Nghe'">
+            <ng-container *ngTemplateOutlet="taiNghe"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Laptop'">
+            <ng-container *ngTemplateOutlet="laptop"></ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="d-grclass gap-2 col-7" class="margin-top-mua">
+        <button
+          class="btn btn-outline-dark btn-lg fw-bolder mt-3 purchase-button"
+          type="button"
+          (click)="buyNow()"
+        >
+          Mua hàng
+        </button>
+        <button
+          class="btn btn-outline-primary btn-lg fw-bolder mt-3 purchase-button"
+          type="button"
+          (click)="addItemToCart()"
+        >
+          Thêm vào giỏ hàng
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mô tả -->
+  <h1 class="text-center mb-5">Mô tả sản phẩm</h1>
+  <div class="container">
+    <div>
+      <p class="text-start fs-2 ">
+        {{ product.moTa[0] }}
+      </p>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <img
+          class="img-size-des"
+          src="http://localhost:3800/images/{{ product.hinhAnh[0].tenImageSP }}"
+          alt=""
+        />
+      </div>
+    </div>
+    <div>
+      <p class="text-start fs-2 ">
+        {{ product.moTa[1] }}
+      </p>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <img
+          class="img-size-des"
+          src="http://localhost:3800/images/{{ product.hinhAnh[1].tenImageSP }}"
+          alt=""
+        />
+      </div>
+    </div>
+    <div>
+      <p class="text-start fs-2">
+        {{ product.moTa[2] }}
+      </p>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <img
+          class="img-size-des"
+          src="http://localhost:3800/images/{{ product.hinhAnh[2].tenImageSP }}"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</body>
+
+<ng-template #chuot>
+  <h5 class="fs-3">Thông số kỹ thuật :</h5>
+  <p>Tên hãng: {{ product.tenHang }}</p>
+  <p>Model: {{ product.thongSo.model }}</p>
+  <p>Bảo hành: {{ product.thongSo.baoHanh }}</p>
+  <p>Kiểu kết nối: {{ product.thongSo.kieuKetNoi }}</p>
+  <p>Cảm biến: {{ product.thongSo.camBien }}</p>
+  <p>DPI: {{ product.thongSo.DPI }}</p>
+</ng-template>
+
+<ng-template #manHinh>
+  <h5 class="fs-3">Thông số kỹ thuật :</h5>
+  <p>Tên hãng: {{ product.tenHang }}</p>
+  <p>Kích thước: {{ product.thongSo.kichThuoc }}</p>
+  <p>Tần số quét: {{ product.thongSo.tanSoQuet }}</p>
+  <p>Hiển thị màu sắc: {{ product.thongSo.hienThiMauSac }}</p>
+  <p>Cổng hình ảnh: {{ product.thongSo.congHinhAnh }}</p>
+</ng-template>
+
+<ng-template #dienThoai>
+  <h5 class="fs-3">Thông số kỹ thuật :</h5>
+  <p>Tên hãng: {{ product.tenHang }}</p>
+  <p>Màn hình: {{ product.thongSo.manHinh }}</p>
+  <p>Camera trước: {{ product.thongSo.cameraTruoc }}</p>
+  <p>Camera sau: {{ product.thongSo.cameraSau }}</p>
+  <p>CPU: {{ product.thongSo.CPU }}</p>
+  <p>Bộ nhớ: {{ product.thongSo.boNho }}</p>
+  <p>Hệ điều hành: {{ product.thongSo.heDieuHanh }}</p>
+</ng-template>
+
+<ng-template #banPhim>
+  <h5 class="fs-3">Thông số kỹ thuật :</h5>
+  <p>Tên hãng: {{ product.tenHang }}</p>
+  <p>Switch: {{ product.thongSo.switch }}</p>
+  <p>Kích thước: {{ product.thongSo.kichThuoc }}</p>
+  <p>Trọng lượng: {{ product.thongSo.trongLuong }}</p>
+  <p>Tình trạng: {{ product.thongSo.tinhTrang }}</p>
+  <p>Bảo hành: {{ product.thongSo.baoHanh }}</p>
+</ng-template>
+
+<ng-template #laptop>
+  <h5 class="fs-3">Thông số kỹ thuật :</h5>
+  <p>Tên hãng: {{ product.tenHang }}</p>
+  <p>CPU: {{ product.thongSo.CPU }}</p>
+  <p>Màn hình: {{ product.thongSo.manHinh }}</p>
+  <p>RAM: {{ product.thongSo.RAM }}</p>
+  <p>Đồ họa: {{ product.thongSo.doHoa }}</p>
+  <p>Lưu trữ: {{ product.thongSo.luuTru }}</p>
+  <p>Hệ điều hành: {{ product.thongSo.heDieuHanh }}</p>
+  <p>PIN: {{ product.thongSo.PIN }}</p>
+  <p>Khối lượng: {{ product.thongSo.khoiLuong }}</p>
+</ng-template>
+
+<ng-template #taiNghe>
+  <h5 class="fs-3">Thông số kỹ thuật :</h5>
+  <p>Tên hãng: {{ product.tenHang }}</p>
+  <p>Chất liệu khung: {{ product.thongSo.chatLieuKhung }}</p>
+  <p>Màu sắc: {{ product.thongSo.mauSac }}</p>
+  <p>Kiểu tai nghe: {{ product.thongSo.kieuTaiNghe }}</p>
+  <p>Kiểu kết nối: {{ product.thongSo.kieuKetNoi }}</p>
+  <p>Thời lượng pin: {{ product.thongSo.thoiLuongPin }}</p>
+  <p>Microphone: {{ product.thongSo.Microphone }}</p>
+  <p>Tần số: {{ product.thongSo.TanSo }}</p>
+  <p>Độ nhạy: {{ product.thongSo.doNhay }}</p>
+</ng-template>

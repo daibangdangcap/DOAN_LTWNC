@@ -1,0 +1,163 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="column menu"></div>
+    <div class="column content"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <!-- menu -->
+    <div class="column menu">
+      <div class="background-table">
+        <div class="row m-0 p-2">
+          <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
+          <div class="col-8 text-center d-flex align-items-center h5">
+            <b>{{ user.hoTen }}</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <hr />
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
+            (click)="onClickBtnMenu(0)"
+          >
+            <i class="fa-solid fa-house"></i><span>Trang chủ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            [routerLink]="['/client/purchase-history']"
+            (click)="onClickBtnMenu(1)"
+          >
+            <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
+            [routerLink]="['/client/your-account']"
+            (click)="onClickBtnMenu(2)"
+          >
+            <i class="fa-regular fa-face-smile"></i
+            ><span>Tài khoản của bạn</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
+            (click)="onClickBtnMenu(3)"
+            [routerLink]="['/client/membership-class']"
+          >
+            <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
+            [routerLink]="['/client/contact']"
+            (click)="onClickBtnMenu(4)"
+          >
+            <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div class="col-12 p-3 text-center h6" (click)="logOut()">
+            <span>Thoát tài khoản</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+
+    <div class="column content">
+      <div class="wraper p-4">
+        <h4>Chào mừng {{ user.hoTen }} đến không gian của mình!</h4>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center flex-column gap-1 fs-4">
+                <span>Ngày tham gia</span>
+                <div class="icon">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <span>{{ user.dateCreated | date : "dd/MM/yyyy" }}</span>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center flex-column gap-1 fs-4">
+                <span>Hạng thành viên</span>
+                <div class="icon">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span>{{ user.hangThanhVien }}</span>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center flex-column gap-1 fs-4">
+                <span>Điểm tích lũy</span>
+                <div class="icon">
+                  <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                <span>{{ user.diem | number }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-6">
+          <div class="wraper p-4">
+            <div class="container">
+              <div class="d-flex align-items-center flex-column">
+                <div class="bkg-round">
+                  <i class="box_img fa-solid fa-box"></i>
+                </div>
+                <h2>Đơn hàng của bạn</h2>
+                <p class="fs-5 text-secondary">{{ countDH }} đơn hàng</p>
+                <button
+                  class="btn btn-dark w-100 button"
+                  (click)="onClickBtnMenu(1)"
+                  [routerLink]="['/client/purchase-history']"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="wraper p-4">
+            <div class="container">
+              <div class="d-flex align-items-center flex-column">
+                <div class="bkg-round">
+                  <i class="box_img fa-solid fa-crown"></i>
+                </div>
+                <h2>Hạng thành viên</h2>
+                <p class="fs-5 text-secondary">
+                  Bạn đang là {{ user.hangThanhVien }}
+                </p>
+                <button
+                  class="btn btn-dark w-100 button"
+                  (click)="onClickBtnMenu(3)"
+                  [routerLink]="['/client/membership-class']"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

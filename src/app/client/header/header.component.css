@@ -1,0 +1,39 @@
+nav{
+    background-color: #494949;
+    position: sticky;
+    top:0;
+    z-index: 5;
+}
+#navbar-container {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.nav-link {
+    color: #F1F1F1;
+}
+.nav-link.active {
+    background-color: #F1F1F1;
+    border-radius: 30px;
+    font-weight: 650;
+}
+.iconClass{
+    position:relative;
+  }
+  .iconClass #validCart{
+    position: absolute;
+    top: -5px;
+    right: -12px;
+    font-size: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: block;
+  }
+/* SEARCH */
+.searchbox{
+    margin-top:5px;
+}
+.inputSearch{
+    border-radius: 10px;
+    width:300px;
+    height: 30px;
+    padding:15px;
+}
